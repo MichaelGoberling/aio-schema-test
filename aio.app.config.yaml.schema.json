@@ -6,7 +6,7 @@
   "additionalProperties": false,
   "properties": {
     "application": {
-      "$ref": "/Users/mgoberling/Desktop/aio.common.config.yaml.schema.json"
+      "$ref": "https://raw.githubusercontent.com/MichaelGoberling/aio-schema-test/main/aio.common.config.yaml.schema.json"
     },
     "extensions": {
       "type": "object",
@@ -16,7 +16,7 @@
         "dx/excshell/1": {
           "anyOf": [
             {
-              "$ref": "/Users/mgoberling/Desktop/aio.ext.config.yaml.schema.json"
+              "$ref": "https://raw.githubusercontent.com/MichaelGoberling/aio-schema-test/main/aio.ext.config.yaml.schema.json"
             },
             {
               "type": "object",
@@ -35,7 +35,7 @@
         "dx/asset-compute/worker/1": {
           "anyOf": [
             {
-              "$ref": "/Users/mgoberling/Desktop/aio.ext.config.yaml.schema.json"
+              "$ref": "https://raw.githubusercontent.com/MichaelGoberling/aio-schema-test/main/aio.ext.config.yaml.schema.json"
             },
             {
               "type": "object",
