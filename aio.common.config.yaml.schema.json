@@ -30,6 +30,7 @@
             "^.*$": {
               "type": "object",
               "description": "Adobe I/O Runtime package configuration",
+              "additionalProperties": false,
               "properties": {
                 "actions": {
                   "type": "object",
