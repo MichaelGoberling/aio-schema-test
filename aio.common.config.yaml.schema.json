@@ -26,6 +26,7 @@
         "packages": {
           "type": "object",
           "description": "Adobe I/O Runtime packages",
+          "additionalProperties": false,
           "patternProperties": {
             "^.*$": {
               "type": "object",
