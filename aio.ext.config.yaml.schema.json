@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Adobe App Builder - ext.config.yaml",
+  "description": "JSON schema for configuring Adobe App Builder applications.",
+  "type": "object",
+  "additionalProperties": true,
+  "allOf": [
+    {
+      "$ref": "/Users/mgoberling/Desktop/aio.common.config.yaml.schema.json"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "operations": {
+          "type": "object",
+          "description": "Extension operations"
+        }
+      }
+    }
+  ]
+}

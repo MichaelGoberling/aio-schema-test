@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Adobe App Builder - app.config.yaml",
+  "description": "JSON schema for configuring Adobe App Builder applications.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "application": {
+      "$ref": "/Users/mgoberling/Desktop/aio.common.config.yaml.schema.json"
+    },
+    "extensions": {
+      "type": "object",
+      "description": "App Builder extension.",
+      "additionalProperties": false,
+      "properties": {
+        "dx/excshell/1": {
+          "anyOf": [
+            {
+              "$ref": "/Users/mgoberling/Desktop/aio.ext.config.yaml.schema.json"
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "$include": {
+                  "type": "string",
+                  "description": "Folder containing extension configuration.",
+                  "default": "src/dx-excshell-1/ext.config.yaml"
+                }
+              }
+            }
+          ],
+          "description": "Experience Cloud Shell extension."
+        },
+        "dx/asset-compute/worker/1": {
+          "anyOf": [
+            {
+              "$ref": "/Users/mgoberling/Desktop/aio.ext.config.yaml.schema.json"
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "$include": {
+                  "type": "string",
+                  "description": "Folder containing extension configuration.",
+                  "default": "src/dx-asset-compute-worker-1/ext.config.yaml"
+                }
+              }
+            }
+          ],
+          "description": "Asset Compute worker extension."
+        }
+      }
+    }
+  }
+}

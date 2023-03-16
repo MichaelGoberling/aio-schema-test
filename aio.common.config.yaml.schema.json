@@ -1,0 +1,221 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Adobe App Builder - common config",
+  "description": "JSON schema for configuring Adobe App Builder applications.",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "actions": {
+      "type": "string",
+      "description": "Folder containing action code",
+      "default": "actions"
+    },
+    "web": {
+      "type": "string",
+      "description": "Folder containing web code",
+      "default": "web-src"
+    },
+    "hostname": {
+      "type": "string",
+      "description": "Hostname for your application"
+    },
+    "runtimeManifest": {
+      "type": "object",
+      "description": "Adobe I/O Runtime configuration",
+      "properties": {
+        "packages": {
+          "type": "object",
+          "description": "Adobe I/O Runtime packages",
+          "patternProperties": {
+            "^.*$": {
+              "type": "object",
+              "description": "Adobe I/O Runtime package configuration",
+              "properties": {
+                "actions": {
+                  "type": "object",
+                  "description": "Adobe I/O Runtime action",
+                  "patternProperties": {
+                    "^.*$": {
+                      "type": "object",
+                      "description": "Adobe I/O Runtime action configuration",
+                      "properties": {
+                        "function": {
+                          "type": "string",
+                          "description": "Path to action code"
+                        },
+                        "runtime": {
+                          "type": "string",
+                          "description": "Node.js version",
+                          "enum": [
+                            "nodejs:14",
+                            "nodejs:16"
+                          ]
+                        },
+                        "web": {
+                          "type": [
+                            "string",
+                            "boolean"
+                          ],
+                          "description": "Expose action over the web",
+                          "enum": [
+                            "yes",
+                            "no"
+                          ],
+                          "default": "yes"
+                        },
+                        "annotations": {
+                          "type": "object",
+                          "description": "Action annotations.",
+                          "properties": {
+                            "require-adobe-auth": {
+                              "type": "boolean",
+                              "description": "Require IMS authorization when invoking actions and accessing deployed web assets",
+                              "default": true
+                            },
+                            "final": {
+                              "type": "boolean",
+                              "description": "Make all action parameters immutable",
+                              "default": true
+                            }
+                          }
+                        },
+                        "limits": {
+                          "type": "object",
+                          "description": "Action resource limits",
+                          "properties": {
+                            "timeout": {
+                              "type": "number",
+                              "description": "Timeout in seconds",
+                              "minimum": 1,
+                              "maximum": 3600,
+                              "default": 60
+                            },
+                            "memory": {
+                              "type": "number",
+                              "description": "Max memory allocation in MB",
+                              "minimum": 128,
+                              "maximum": 4096,
+                              "default": 256
+                            }
+                          }
+                        },
+                        "inputs": {
+                          "type": "object",
+                          "description": "Static action inputs. Use '$ENV_VAR' for passing values from a local .env",
+                          "properties": {
+                            "patternProperties": {
+                              "^.*$": {
+                                "type": "string",
+                                "description": "Static action input"
+                              }
+                            }
+                          }
+                        },
+                        "include": {
+                          "type": "array",
+                          "description": "Files to include with deployed action code",
+                          "items": {
+                            "type": [
+                              "array",
+                              "string"
+                            ]
+                          },
+                          "default": []
+                        }
+                      }
+                    }
+                  }
+                },
+                "sequences": {
+                  "type": "object",
+                  "description": "Adobe I/O Runtime sequence",
+                  "patternProperties": {
+                    "^.*$": {
+                      "type": "object",
+                      "description": "Adobe I/O Runtime sequence configuration",
+                      "properties": {
+                        "actions": {
+                          "type": [
+                            "array",
+                            "string"
+                          ],
+                          "description": "Comma-separated list of actions, organized in order of execution",
+                          "default": " "
+                        },
+                        "web": {
+                          "type": [
+                            "string",
+                            "boolean"
+                          ],
+                          "description": "Expose action over the web",
+                          "enum": [
+                            "yes",
+                            "no"
+                          ],
+                          "default": "yes"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    "hooks": {
+      "type": "object",
+      "description": "App Builder app lifecycle hooks"
+    },
+    "unitTest": {
+      "type": "string",
+      "description": "Folder containing unit tests"
+    },
+    "e2eTest": {
+      "type": "string",
+      "description": "Folder containing e2e tests"
+    },
+    "dist": {
+      "type": "string",
+      "description": "Build output folder"
+    },
+    "htmlCacheDuration": {
+      "type": "number",
+      "description": "Cache duration for UI .html files in seconds",
+      "default": 60
+    },
+    "jsCacheDuration": {
+      "type": "number",
+      "description": "Cache duration for UI .js files in seconds",
+      "default": 604800
+    },
+    "cssCacheDuration": {
+      "type": "number",
+      "description": "Cache duration for UI .css files in seconds",
+      "default": 604800
+    },
+    "imageCacheDuration": {
+      "type": "number",
+      "description": "Cache duration for UI image (.png, .jpeg, .gif, etc.) files in seconds",
+      "default": 604800
+    },
+    "tvmurl": {
+      "type": "string",
+      "description": "Alternative TVM Url used for uploading UI"
+    },
+    "awsaccesskeyid": {
+      "type": "string",
+      "description": "AWS Access Key ID for uploading UI to own S3 bucket"
+    },
+    "awssecretaccesskey": {
+      "type": "string",
+      "description": "AWS Secret Access Key for uploading UI to own S3 bucket"
+    },
+    "s3bucket": {
+      "type": "string",
+      "description": "AWS S3 Bucket Name for uploading UI to own S3 bucket"
+    }
+  }
+}
