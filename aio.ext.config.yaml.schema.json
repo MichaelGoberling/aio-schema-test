@@ -6,7 +6,7 @@
   "additionalProperties": true,
   "allOf": [
     {
-      "$ref": "/Users/mgoberling/Desktop/aio.common.config.yaml.schema.json"
+      "$ref": "https://raw.githubusercontent.com/MichaelGoberling/aio-schema-test/main/aio.common.config.yaml.schema.json"
     },
     {
       "type": "object",
